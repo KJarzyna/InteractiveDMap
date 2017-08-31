@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>images/optimized/morza_op.png</file>
+    </qresource>
+</RCC>

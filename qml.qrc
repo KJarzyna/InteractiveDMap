@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainForm.ui.qml</file>
+        <file>DMap.qml</file>
+        <file>main_window.qml</file>
+    </qresource>
+    <qresource prefix="/files">
+        <file>images/optimized/dm.png</file>
+        <file>images/optimized/gory_op.png</file>
+        <file>images/optimized/granice_op.png</file>
+        <file>images/optimized/inne_nazwy_op.png</file>
+        <file>images/optimized/kraje_op.png</file>
+        <file>images/optimized/kropki_miasta_op.png</file>
+        <file>images/optimized/kropki_stolice_op.png</file>
+        <file>images/optimized/miasta_op.png</file>
+        <file>images/optimized/morza_i_oceany_op.png</file>
+        <file>images/optimized/nazwy_op.png</file>
+        <file>images/optimized/obwodka_kontynentu_op.png</file>
+        <file>images/optimized/oznaczenia_op.png</file>
+        <file>images/optimized/rozawiatrow_op.png</file>
+        <file>images/optimized/róża.png</file>
+        <file>images/optimized/rzeki_nazwy_op.png</file>
+        <file>images/optimized/rzeki_op.png</file>
+        <file>images/optimized/sigile_op.png</file>
+        <file>images/optimized/stolice_op.png</file>
+    </qresource>
+</RCC>

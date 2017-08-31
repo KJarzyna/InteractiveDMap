@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>images/optimized/background_op8.png</file>
+    </qresource>
+</RCC>

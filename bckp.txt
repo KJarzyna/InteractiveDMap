@@ -1,0 +1,45 @@
+ Image {
+            id: backgrnd
+            source: "files/images/optimized/background_op8.png"
+            x: -(sourceSize.width/2 - parent.width/2)
+            y: -(sourceSize.height/2 - parent.height/2)
+
+//            transform: Scale {
+//                origin.x: zoomableArea.zoomX// - backgrnd.x
+//                origin.y: zoomableArea.zoomY// - backgrnd.y
+//                xScale: zoomableArea.zoom
+//                yScale: zoomableArea.zoom
+//                }
+            }
+
+        onWheel: {
+            //backgrnd.scale += 0.1 * wheel.angleDelta.y / 120
+//            zoomableArea.zoom += 0.1 * wheel.angleDelta.y / 120
+
+//            backgrnd.x += -(mouseX - zoomableArea.zoomX)
+//            backgrnd.y += -(mouseY - zoomableArea.zoomY)
+
+//            zoomableArea.zoomX = zoomableArea.mouseX
+//            zoomableArea.zoomY = zoomableArea.mouseY
+
+            //backgrnd.x += -(mouseX - width/2)
+            //backgrnd.y += -(mouseY - height/2)
+
+            zoomableArea.zoom = 0.1 * wheel.angleDelta.y / 120
+            backgrnd.width = backgrnd.width*(1+zoomableArea.zoom)
+            backgrnd.height = backgrnd.height*(1+zoomableArea.zoom)
+
+
+            if(zoomableArea.zoom < 0.2)
+                zoomableArea.zoom = 0.2
+            if(zoomableArea.zoom > 1.2)
+                zoomableArea.zoom = 1.2
+
+            if(backgrnd.scale < 0.2)
+                backgrnd.scale = 0.2
+            if(backgrnd.scale > 1)
+                backgrnd.scale = 1
+
+            console.log('Background.x: ', backgrnd.x)
+            console.log('Background.y: ', backgrnd.y)
+        }

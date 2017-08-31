@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>images/optimized/kolor_op.png</file>
+    </qresource>
+</RCC>
