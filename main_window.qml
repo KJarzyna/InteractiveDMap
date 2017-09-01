@@ -11,67 +11,64 @@ Window {
     y: 0
 
     MouseArea {
-        id: zoomableArea
-        hoverEnabled: true
-        property real zoom: 1
-        property real zoomX: 0
-        property real zoomY: 0
+        id: windowArea
         anchors.fill: parent
 
         Image {
-            id: backgrnd
+            id: mapImg
             source: "files/images/optimized/background_op8.png"
             x: -(sourceSize.width/2 - parent.width/2)
             y: -(sourceSize.height/2 - parent.height/2)
 
-//            transform: Scale {
-//                origin.x: zoomableArea.zoomX// - backgrnd.x
-//                origin.y: zoomableArea.zoomY// - backgrnd.y
-//                xScale: zoomableArea.zoom
-//                yScale: zoomableArea.zoom
-//                }
+            transform: Scale {
+                id: imgScale
             }
 
-        onWheel: {
-            //backgrnd.scale += 0.1 * wheel.angleDelta.y / 120
-//            zoomableArea.zoom += 0.1 * wheel.angleDelta.y / 120
+            MouseArea {
+                id: imageArea
+                hoverEnabled: true
+                propagateComposedEvents: true
+                anchors.fill: mapImg
 
-//            backgrnd.x += -(mouseX - zoomableArea.zoomX)
-//            backgrnd.y += -(mouseY - zoomableArea.zoomY)
+                property real zoomFactor: 1.5
 
-//            zoomableArea.zoomX = zoomableArea.mouseX
-//            zoomableArea.zoomY = zoomableArea.mouseY
+                drag.target: mapImg
+                drag.axis: Drag.XAndYAxis
 
-            //backgrnd.x += -(mouseX - width/2)
-            //backgrnd.y += -(mouseY - height/2)
-
-            zoomableArea.zoom = 0.1 * wheel.angleDelta.y / 120
-            backgrnd.width = backgrnd.width*(1+zoomableArea.zoom)
-            backgrnd.height = backgrnd.height*(1+zoomableArea.zoom)
-
-
-            if(zoomableArea.zoom < 0.2)
-                zoomableArea.zoom = 0.2
-            if(zoomableArea.zoom > 1.2)
-                zoomableArea.zoom = 1.2
-
-            if(backgrnd.scale < 0.2)
-                backgrnd.scale = 0.2
-            if(backgrnd.scale > 1)
-                backgrnd.scale = 1
-
-            console.log('Background.x: ', backgrnd.x)
-            console.log('Background.y: ', backgrnd.y)
-        }
+                onClicked: {
+                    mouse.accepted = false
+                    console.log('Image.x: ', imageArea.mouseX)
+                    console.log('Image.y: ', imageArea.mouseY)
+                    }
+                onWheel: {
+                        if(wheel.angleDelta.y > 0 && imgScale.xScale < 1.2)                             // zoom in
+                        {
+                            var zoom = imageArea.zoomFactor
+                            var realX = wheel.x * imgScale.xScale
+                            var realY = wheel.y * imgScale.yScale
+                            mapImg.x += (1-zoom)*realX
+                            mapImg.y += (1-zoom)*realY
+                            imgScale.xScale *=zoom
+                            imgScale.yScale *=zoom
+                            }
+                        else if(wheel.angleDelta.y < 0 && imgScale.xScale > 0.5)
+                        {                                                                               // zoom out
+                            zoom = 1/imageArea.zoomFactor
+                            realX = wheel.x * imgScale.xScale
+                            realY = wheel.y * imgScale.yScale
+                            mapImg.x += (1-zoom)*realX
+                            mapImg.y += (1-zoom)*realY
+                            imgScale.xScale *=zoom
+                            imgScale.yScale *=zoom
+                            }
+                        }
+                }
+            }
 
         onClicked: {
-            console.log('PosXBefore: ', backgrnd.x)
-            console.log('PosYBefore: ', backgrnd.y)
-            backgrnd.x += -(mouseX - width/2)
-            backgrnd.y += -(mouseY - height/2)
 
-            console.log('PosXAfter: ', backgrnd.x)
-            console.log('PosYAfter: ', backgrnd.y)
+            console.log('Window.x: ', windowArea.mouseX)
+            console.log('Window.y: ', windowArea.mouseY)
         }
     }
 }
