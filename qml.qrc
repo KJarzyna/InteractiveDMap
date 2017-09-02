@@ -1,11 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
         <file>DMap.qml</file>
         <file>main_window.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>loading.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file>background.png</file>
+        <file>images/fox.gif</file>
     </qresource>
 </RCC>
