@@ -6,9 +6,9 @@ CONFIG += c++11
 SOURCES += main.cpp
 
 RESOURCES += qml.qrc \
-    qml2.qrc \
-    qml3.qrc \
-    qml4.qrc
+   # qml2.qrc \
+    #qml3.qrc \
+   # qml4.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
